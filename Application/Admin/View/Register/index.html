@@ -1,0 +1,31 @@
+<!-- meeting Admin 注册页 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+</head>
+
+<body>
+
+<div class="inputBox">
+	<pre>name:<input type="text" name="name" /></pre>
+	<pre>email:<input type="text" name="email" /></pre>
+	<pre>password:<input type="password" name="password" /></pre>
+	<pre><button id="btn-register" type="button" value="Register">Register</button></pre>
+</div>
+
+<div class="returnMsg">
+
+</div>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+$("#btn-register").click(
+	$.ajax(
+		url:{:U("Admin/Register")}
+	);
+);
+</script>
+</body>
+
+</html>
