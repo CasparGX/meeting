@@ -70,6 +70,7 @@ class ConferenceController extends Controller {
 
     public function deleteConference() {
     	$id = I('id');
+    	//删除该会议ID的文件
     	$result = deldir("/Public/uploadfile/conference/".$id."/");
     	if($result) {
     		$conference = M('Conference');
