@@ -4,40 +4,36 @@ use Think\Model;
 
 class ApplicantModel extends Model {
 
-	public function addUser($name, $email, $password, $power, $cdkey, $cdkeyTime) {
-
+	/**
+	 * 新增报名
+	 */
+	public function join($uid, $conferenceID) {
 		$data = array(
-    			'name'=>$name,
-    			'email'=>$email,
-    			'password'=>$password,
-    			'power'=>$power,
-    			'cdkey'=>$cdkey,
-    			'cdkey_time'=>$cdkeyTime
-    		);
-		$lastInsID = $this->add($data);
-		return $lastInsID;
-	}
-
-	public function changeInfo($id, $name, $sex, $phone, $intro) {
-		$data = array(
-				'name'=>$name,
-				'sex'=>$sex,
-				'phone'=>$phone,
-				'intro'=>$intro
+				'uid'=>$uid,
+				'conferenceID'=>$conferenceID
 			);
-		return $this->where(array('id'=>$id))->save($data);
 
-
+		$result = $this->add($data);
+		return $result;
 	}
 
-	public function changeAvatar($id, $avatar, $scale) {
-		$data = array(
-				'avatar'=>$avatar,
-				'scale'=>$scale
-			);
-		return $this->where(array('id'=>$id))->save($data);
+	/**
+	 * 取消报名,或审核未通过
+	 */
+	public function cancle($id) {
+		$data['use'] = -1;
+		$result = $this->where(array('id'=>$id))->save($data);
+		return $result;
 	}
 
+	/**
+	 * 通过报名
+	 */
+	public function pass($id) {
+		$data['use'] = 1;
+		$result = $this->where(array('id'=>$id))->save($data);
+		return $result;
+	}
 }
 
 ?>
