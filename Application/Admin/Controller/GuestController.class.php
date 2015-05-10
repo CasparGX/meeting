@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
-class GuestController extends Controller {
+use Admin\Controller\CommonController;
+class GuestController extends CommonController {
     public function index(){
 
     }

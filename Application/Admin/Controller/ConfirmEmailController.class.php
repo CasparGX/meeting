@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
-class ConfirmEmailController extends Controller {
+use Admin\Controller\CommonController;
+class ConfirmEmailController extends CommonController {
 
     public function index(){
     	echo "123";

@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+use Admin\Controller\CommonController;
 use Admin\Model\ScheduleModel;
-class ScheduleController extends Controller {
+class ScheduleController extends CommonController {
     public function index(){
 
     }

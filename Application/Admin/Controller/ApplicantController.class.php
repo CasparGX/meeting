@@ -1,9 +1,9 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+use Admin\Controller\CommonController;
 use Admin\Model\ApplicantModel;
 
-class ApplicantController extends Controller {
+class ApplicantController extends CommonController {
     public function index(){
     	$this->display();
     }

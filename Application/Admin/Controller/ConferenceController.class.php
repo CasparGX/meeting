@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
-class ConferenceController extends Controller {
+use Admin\Controller\CommonController;
+class ConferenceController extends CommonController {
     public function index(){
     	$this->display();
     }

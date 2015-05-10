@@ -1,8 +1,8 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+use Admin\Controller\CommonController;
 use Admin\Model\NewsModel;
-class NewsController extends Controller {
+class NewsController extends CommonController {
     public function index(){
 
     }
@@ -83,7 +83,7 @@ class NewsController extends Controller {
     	$news = M('News');
     	$path = $news->where(array('id'=>$id))->find();
     	$path = $path['illustration'];
-    	$path = substr($path,1,strlen($path));
+    	//$path = substr($path,1,strlen($path));
     	unlink($path);
     	$result = $news->delete($id);
     	if($result) {

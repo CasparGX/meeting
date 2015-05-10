@@ -1,11 +1,35 @@
 <?php
 namespace Admin\Controller;
-use Think\Controller;
+use Admin\Controller\CommonController;
 use Admin\Model\UserModel;
-class UserController extends Controller {
+class UserController extends CommonController {
 
     public function index(){
     	$this->display();
+    }
+
+    public function login() {
+    	$email = I('email');
+    	$password = I('password');
+    	$password = md5($password);
+
+    	$data['email'] = $email;
+    	$data['password'] = $password;
+
+    	$user = M('User');
+    	$result = $user->where($data)->find();
+
+    	if ($result) {
+    		if($result['use']==0) {
+	    		$this->ajaxReturn("账号未激活","json");
+	    	} else if($result) {
+	    		$this->ajaxReturn($result,"json");
+	    	}
+    	} else {
+    		$this->ajaxReturn("账号不存在","json");
+    	}
+
+
     }
 
     public function changeInfo() {
