@@ -51,12 +51,12 @@ function returnMsg($result,$msg) {
          $file->savePath = $uploadPath;
          // 存在同名是否覆盖
          $file->uploadReplace = true;
-         $uploadPath = "/Public/uploadfile/user/avatar/";
+         $uploadPath = "/Public/uploadfile/".$path;
          if($file->upload()){
              $info = $file->getUploadFileInfo();
              //dump($info);die();
 					//缩略图长宽比
-	             	$imageSrc = ".".$uploadPath.$id.".".$info[0]["extension"];
+	             	$imageSrc = $uploadPath.$id.".".$info[0]["extension"];
          			$uploadPath = $imageSrc;
 	             	$image = new \Think\Image2();
 		            $image = $image->open($imageSrc);
