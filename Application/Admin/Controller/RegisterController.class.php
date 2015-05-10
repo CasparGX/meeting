@@ -9,7 +9,7 @@ class RegisterController extends CommonController {
 	 * 注册页,回复邮件,添加信息进入数据库
 	 */
     public function index(){
-        // echo __ROOT__;die();
+        //echo U(__ROOT__."/Admin/Register/confirm/id/".$id."/email/".md5($email)."/cdkey/".$cdkey,"","",true);die();
     	//获取post数据
     	$name = I('post.name');
     	$email = I('post.email');
@@ -44,7 +44,7 @@ class RegisterController extends CommonController {
     	//邮件主题
     	$subject = "欢迎注册我们";
     	//邮件确认点击链接
-    	$mailURL = U(__ROOT__."/Admin/Register/confirm/id/".$id."/email/".md5($email)."/cdkey/".$cdkey,"","",true);
+    	$mailURL = U("/Admin/Register/confirm/id/".$id."/email/".md5($email)."/cdkey/".$cdkey,"","",true);
     	//echo $mailURL;
     	//邮件正文
     	$mailBody = "欢迎注册我们的会议召集系统<br/>";
