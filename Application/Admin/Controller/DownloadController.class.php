@@ -6,7 +6,7 @@ class DownloadController extends CommonController {
         $this->display();
     }
 
-    public function upload($cid, $name) {
+    public function upload($cid) {
     	$uploadPath = "./Public/uploadfile/conference/".$cid."/download/";
         //1,引入模块包
         //import('@.Org.Net.UploadFile');
@@ -45,12 +45,12 @@ class DownloadController extends CommonController {
     	//$uid = session('uid');
     	$uid = I('uid');
     	//$name = session('username');
-    	$name = I('name');
+    	//$name = I('name');//取消引用name
     	$cid = I('post.cid');
     	if(empty($_FILES)) {
     		$this->error("请选择上传的文件");
     	} else {
-    		$result = $this->upload($uid, $name);
+    		$result = $this->upload($uid);
     		$title = $result['title'];
     		$path = $result['path'];
 
@@ -66,6 +66,23 @@ class DownloadController extends CommonController {
 
     public function deleteFile() {
         $id = I('id');
+        $download = M('Downlaod');
+        $result = $download->delete($id);
+
+        //删除文件
+        $path = $news->where(array('id'=>$id))->find();
+        $path = '.'.$path['path'];
+        unlink($path);
+        //数据库操作
+        if($result) {
+            $msg = "文件删除成功";
+            $result = returnMsg(1,$msg);
+            $this->ajaxReturn($result,"json");
+        } else {
+            $msg = "文件删除失败";
+            $result = returnMsg(0,$msg);
+            $this->ajaxReturn($result,"json");
+        }
 
     }
 
