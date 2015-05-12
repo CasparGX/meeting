@@ -82,7 +82,7 @@ class NewsController extends CommonController {
     	$id = I('id');
     	$news = M('News');
     	$path = $news->where(array('id'=>$id))->find();
-    	$path = $path['illustration'];
+    	$path = '.'.$path['illustration'];
     	//$path = substr($path,1,strlen($path));
     	unlink($path);
     	$result = $news->delete($id);
