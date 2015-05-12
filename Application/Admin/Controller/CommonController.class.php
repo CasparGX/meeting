@@ -30,9 +30,9 @@ class CommonController extends Controller {
         		$this->controller = CONTROLLER_NAME;
 				$this->action = ACTION_NAME;
 				//判断调用控制器是否为用户权限内,否则返回错误
-				if($this->controller=="Schedule" || $this->controller=="Download" || $this->controller=="User") {
+				/*if($this->controller=="Schedule" || $this->controller=="Download" || $this->controller=="User") {
 
-				}
+				}*/
 				switch($this->controller) {
 					case "Schedule":
 
@@ -52,8 +52,8 @@ class CommonController extends Controller {
     }
 
 
-    //判断权限
-    protected function power() {
+    
+    protected function jmpSchedule() {
 
     }
 
